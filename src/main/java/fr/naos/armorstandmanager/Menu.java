@@ -17,15 +17,13 @@ import static org.bukkit.Material.AIR;
 
 public class Menu implements Listener {
 
-    private static Inventory inventory;
-
 
     public static Map<Player, ArmorStand> playerArmorStandMap = new HashMap<>();
 
 
     public static void manage(Player player) {
         if (!(player.hasPermission("asmanager.custominteract"))) { player.sendMessage(cData.no_perm);}
-        inventory = org.bukkit.Bukkit.createInventory(new MenuHolder(), 5*9, cData.title_menu);
+        Inventory inventory = org.bukkit.Bukkit.createInventory(new MenuHolder(), 5 * 9, cData.title_menu);
         initaliseItem(player, inventory);
         player.openInventory(inventory);
     }
@@ -48,7 +46,6 @@ public class Menu implements Listener {
     private void onItemClick(InventoryClickEvent event) {
         Inventory inv = event.getInventory();
         Player player = (Player) event.getWhoClicked();
-        if (inv == null) return;
         if (inv.getHolder() instanceof MenuHolder) {
             ArmorStand armorstandChanged = playerArmorStandMap.get(player);
             event.setCancelled(true);
@@ -61,9 +58,7 @@ public class Menu implements Listener {
                     armorstandChanged.setInvulnerable(!armorstandChanged.isInvulnerable());
                     initaliseItem(player, inv);
                 } else if (event.getCurrentItem().getType() == Material.CHAINMAIL_CHESTPLATE && event.getSlot() == 15) {
-                    /*
-                    TODO : Set armor
-                     */
+                    player.sendMessage(ChatColor.GREEN + "IN DEV");
                 } else if (event.getCurrentItem().getType() == Material.BARRIER && event.getSlot() == 30) {
                     armorstandChanged.setGravity(!armorstandChanged.hasGravity());
                     initaliseItem(player, inv);
@@ -74,10 +69,5 @@ public class Menu implements Listener {
                 player.setItemOnCursor(null);
             }
         }
-    }
-
-
-    public Inventory getInventory() {
-        return inventory;
     }
 }
