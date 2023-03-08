@@ -1,0 +1,6 @@
+name: ArmorstandManager
+version: '${project.version}'
+main: fr.naos.armorstandmanager.ArmorstandManager
+api-version: 1.16
+authors: [NaosV1]
+description: Manage your armorstands
