@@ -1,17 +1,24 @@
 package fr.naos.armorstandmanager;
 
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ArmorstandManager extends JavaPlugin {
 
+    public static ArmorstandManager instance;
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        instance = this;
+        saveDefaultConfig();
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new ArmorstandListener(), this);
+        pm.registerEvents(new Menu(), this);
+        Metrics metrics = new Metrics(this, 17899);
+        cData.loadConfig();
 
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public static ArmorstandManager getInstance() {
+        return instance;
     }
 }
