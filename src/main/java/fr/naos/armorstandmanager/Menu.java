@@ -85,7 +85,21 @@ public class Menu implements Listener {
                 } else if (event.getCurrentItem().getType() == Material.ARMOR_STAND && event.getSlot() == 32) {
                     armorstandChanged.setBasePlate(!armorstandChanged.isVisible());
                     initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.IRON_SWORD && event.getSlot() == 10) {
+                }
+                player.setItemOnCursor(null);
+            }
+        }
+    }
+
+    @EventHandler
+    private void onPoseClick(InventoryClickEvent event) {
+        Inventory inv = event.getInventory();
+        Player player = (Player) event.getWhoClicked();
+        ArmorStand armorstandChanged = playerArmorStandMap.get(player);
+        if (inv.getHolder() instanceof MenuHolder && armorstandChanged != null) {
+            event.setCancelled(true);
+            if (event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
+                if (event.getCurrentItem().getType() == Material.IRON_SWORD && event.getSlot() == 10) {
                     armorStandPos(armorstandChanged, "goAttack");
                 } else if (event.getCurrentItem().getType() == Material.RED_BED && event.getSlot() == 12) {
                     armorStandPos(armorstandChanged, "allonger");
