@@ -35,7 +35,7 @@ public class Menu implements Listener {
         inventory.setItem(13, ItemManage.createItem(armorstand.isInvulnerable(), Material.ENCHANTED_GOLDEN_APPLE, cData.invulnerable_text, 1, (armorstand.isInvulnerable() ? cData.invulnerable_lore_enable : cData.invulnerable_lore_disable)));
         inventory.setItem(15, ItemManage.createItem(false, Material.LADDER, cData.set_pos_text, 1, cData.set_pos_lore));
         inventory.setItem(30, ItemManage.createItem(armorstand.hasGravity(), Material.BARRIER, cData.gravity_text, 1, (armorstand.hasGravity() ? cData.gravity_lore_enable : cData.gravity_lore_disable)));
-        inventory.setItem(32, ItemManage.createItem(armorstand.hasBasePlate(), Material.ARMOR_STAND, cData.baseplate_text, 1, (armorstand.isVisible() ? cData.baseplate_lore_enable : cData.baseplate_lore_disable)));
+        inventory.setItem(32, ItemManage.createItem(armorstand.hasBasePlate(), Material.ARMOR_STAND, cData.baseplate_text, 1, (armorstand.hasBasePlate() ? cData.baseplate_lore_enable : cData.baseplate_lore_disable)));
         for (int i = 0; i < inventory.getSize(); i++) {
             if (inventory.getItem(i) == null) {
                 inventory.setItem(i, ItemManage.createItem(false, Material.GRAY_STAINED_GLASS_PANE, " ", 1));
@@ -83,7 +83,7 @@ public class Menu implements Listener {
                     armorstandChanged.setGravity(!armorstandChanged.hasGravity());
                     initaliseItem(player, inv);
                 } else if (event.getCurrentItem().getType() == Material.ARMOR_STAND && event.getSlot() == 32) {
-                    armorstandChanged.setBasePlate(!armorstandChanged.isVisible());
+                    armorstandChanged.setBasePlate(!armorstandChanged.hasBasePlate());
                     initaliseItem(player, inv);
                 }
                 player.setItemOnCursor(null);
@@ -118,27 +118,35 @@ public class Menu implements Listener {
         armorStand.setArms(true);
         switch (position) {
             case "goAttack":
+                armorStand.setHeadPose(new EulerAngle(0 ,0, 0));
+                armorStand.setBodyPose(new EulerAngle(0, 0, 0));
                 armorStand.setLeftArmPose(new EulerAngle(120, 0, 0));
                 armorStand.setLeftLegPose(new EulerAngle(120, 0, 0));
                 armorStand.setRightArmPose(new EulerAngle(280, 0, 0));
                 armorStand.setRightLegPose(new EulerAngle(-170, 0, 0));
                 break;
             case "allonger":
+                armorStand.setHeadPose(new EulerAngle(-0.5 ,0, 0));
+                armorStand.setBodyPose(new EulerAngle(-0.3, 0, 0));
                 armorStand.setLeftArmPose(new EulerAngle(164, 1, 0));
                 armorStand.setLeftLegPose(new EulerAngle(300, 0, 0));
                 armorStand.setRightArmPose(new EulerAngle(164, -1, 0));
                 armorStand.setRightLegPose(new EulerAngle(300, 0, 0));
                 break;
             case "handInAir":
-                armorStand.setLeftArmPose(new EulerAngle(111, 0, 0));
+                armorStand.setHeadPose(new EulerAngle(0 ,0, 0));
+                armorStand.setBodyPose(new EulerAngle(0, 0, 0));
+                armorStand.setLeftArmPose(new EulerAngle(280, 0, 0.5));
                 armorStand.setLeftLegPose(new EulerAngle(0, 0, 0));
-                armorStand.setRightArmPose(new EulerAngle(280, 0, 0));
+                armorStand.setRightArmPose(new EulerAngle(280, 0, -0.5));
                 armorStand.setRightLegPose(new EulerAngle(0, 0, 0));
                 break;
             case "swordInRock":
-                armorStand.setLeftArmPose(new EulerAngle(11, 0, 0));
+                armorStand.setHeadPose(new EulerAngle(0 ,0, 0));
+                armorStand.setBodyPose(new EulerAngle(0, 0, 0));
+                armorStand.setLeftArmPose(new EulerAngle(4.5, -0.3, -3));
                 armorStand.setLeftLegPose(new EulerAngle(0, 0, 0));
-                armorStand.setRightArmPose(new EulerAngle(280, 0, 0));
+                armorStand.setRightArmPose(new EulerAngle(4.5, 0.3, 3));
                 armorStand.setRightLegPose(new EulerAngle(-0, 0, 0));
                 break;
         }
