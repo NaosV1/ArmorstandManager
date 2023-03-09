@@ -48,6 +48,7 @@ public class Menu implements Listener {
         Player player = (Player) event.getWhoClicked();
         if (inv.getHolder() instanceof MenuHolder) {
             ArmorStand armorstandChanged = playerArmorStandMap.get(player);
+            if (armorstandChanged == null) player.closeInventory();
             event.setCancelled(true);
             if (event.getCurrentItem() == null || event.getCurrentItem().getType() == AIR) return;
             if (event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
