@@ -49,7 +49,7 @@ public final class ArmorstandManager extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage("\n§a[ArmorStand Manager] §fA new version is available\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n§fYour version : §b" + getDescription().getVersion() + "\n§fNew version : §b" + content + "\n§fDownload it here :§e https://www.spigotmc.org/resources/armorstand-manager.108524/\n§fIf you §clike §fthe plugin, please leave a review, it help a lot !\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n");
             }
         } catch (Exception e) {
-            Bukkit.getConsoleSender().sendMessage("§cError checking update for ArmorStand Manager : " + e.getMessage());
+            Bukkit.getConsoleSender().sendMessage("§cError checking update for ArmorStand Manager : §e" + e.getMessage());
         }
 
     }
