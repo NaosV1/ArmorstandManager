@@ -1,2 +1,4 @@
 prefix: "&b[&6ASManager&b]"
-lang: "fr"
+
+# Available languages: "en", "fr"
+lang: "en"
