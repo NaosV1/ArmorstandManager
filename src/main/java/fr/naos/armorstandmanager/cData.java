@@ -30,6 +30,10 @@ public class cData {
     public static String handInAir_lore;
     public static String swordInRock_text;
     public static String swordInRock_lore;
+    public static String arrowLeft_text;
+    public static String arrowLeft_lore;
+    public static String arrowRight_text;
+    public static String arrowRight_lore;
 
     public static String lang = ArmorstandManager.getInstance().getConfig().getString("lang");
     public static void loadConfig() {
@@ -60,6 +64,10 @@ public class cData {
             handInAir_lore = "§f    Cliquez pour §emettre §fle porte armure en position main en l'air";
             swordInRock_text = "§aEpée dans la roche";
             swordInRock_lore = "§f    Cliquez pour §emettre §fle porte armure en position épée dans la roche";
+            arrowLeft_text = "§aTourner vers la gauche";
+            arrowLeft_lore = "§f    Cliquez pour §etourner §fle porte armure vers la gauche";
+            arrowRight_text = "§aTourner vers la droite";
+            arrowRight_lore = "§f    Cliquez pour §etourner §fle porte armure vers la droite";
 
 
         } else if (lang.equalsIgnoreCase("en")) {
@@ -88,6 +96,10 @@ public class cData {
             handInAir_lore = "§f    Click to §eput §fthe armorstand in hand in the air position";
             swordInRock_text = "§aSword in the rock";
             swordInRock_lore = "§f    Click to §eput §fthe armorstand in sword in the rock position";
+            arrowLeft_text = "§aTurn to the left";
+            arrowLeft_lore = "§f    Click to §eturn §fthe armorstand to the left";
+            arrowRight_text = "§aTurn to the right";
+            arrowRight_lore = "§f    Click to §eturn §fthe armorstand to the right";
 
         } else {
             ArmorstandManager.getInstance().getLogger().warning("The language is not valid, please change it in the config.yml");
