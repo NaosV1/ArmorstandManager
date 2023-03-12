@@ -87,34 +87,32 @@ public class Menu implements Listener {
         Inventory inv = event.getInventory();
         Player player = (Player) event.getWhoClicked();
         ArmorStand armorstandChanged = playerArmorStandMap.get(player);
-        if (inv.getHolder() instanceof MenuHolder && armorstandChanged != null) {
+        if (inv.getHolder() instanceof MenuHolder && armorstandChanged != null && event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
             event.setCancelled(true);
-            if (event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
-                Location loc = armorstandChanged.getLocation();
-                if (event.getCurrentItem().getType() == Material.ARROW && event.getSlot() == 11) {
-                    armorstandChanged.setArms(!armorstandChanged.hasArms());
-                    initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.ENCHANTED_GOLDEN_APPLE && event.getSlot() == 13) {
-                    armorstandChanged.setInvulnerable(!armorstandChanged.isInvulnerable());
-                    initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.LADDER && event.getSlot() == 15) {
-                    player.closeInventory();
-                    positionManage(player);
-                } else if (event.getCurrentItem().getType() == Material.BARRIER && event.getSlot() == 30) {
-                    armorstandChanged.setGravity(!armorstandChanged.hasGravity());
-                    initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.ARMOR_STAND && event.getSlot() == 32) {
-                    armorstandChanged.setBasePlate(!armorstandChanged.hasBasePlate());
-                    initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.PLAYER_HEAD && event.getSlot() == 26) {
-                    armorstandChanged.teleport(new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw() - 25, loc.getPitch()));
-                    initaliseItem(player, inv);
-                } else if (event.getCurrentItem().getType() == Material.PLAYER_HEAD && event.getSlot() == 18) {
-                    armorstandChanged.teleport(new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw() + 25, loc.getPitch()));
-                    initaliseItem(player, inv);
-                }
-                player.setItemOnCursor(null);
+            Location loc = armorstandChanged.getLocation();
+            if (event.getCurrentItem().getType() == Material.ARROW && event.getSlot() == 11) {
+                armorstandChanged.setArms(!armorstandChanged.hasArms());
+                initaliseItem(player, inv);
+            } else if (event.getCurrentItem().getType() == Material.ENCHANTED_GOLDEN_APPLE && event.getSlot() == 13) {
+                armorstandChanged.setInvulnerable(!armorstandChanged.isInvulnerable());
+                initaliseItem(player, inv);
+            } else if (event.getCurrentItem().getType() == Material.LADDER && event.getSlot() == 15) {
+                player.closeInventory();
+                positionManage(player);
+            } else if (event.getCurrentItem().getType() == Material.BARRIER && event.getSlot() == 30) {
+                armorstandChanged.setGravity(!armorstandChanged.hasGravity());
+                initaliseItem(player, inv);
+            } else if (event.getCurrentItem().getType() == Material.ARMOR_STAND && event.getSlot() == 32) {
+                armorstandChanged.setBasePlate(!armorstandChanged.hasBasePlate());
+                initaliseItem(player, inv);
+            } else if (event.getCurrentItem().getType() == Material.PLAYER_HEAD && event.getSlot() == 26) {
+                armorstandChanged.teleport(new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw() - 25, loc.getPitch()));
+                initaliseItem(player, inv);
+            } else if (event.getCurrentItem().getType() == Material.PLAYER_HEAD && event.getSlot() == 18) {
+                armorstandChanged.teleport(new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw() + 25, loc.getPitch()));
+                initaliseItem(player, inv);
             }
+            player.setItemOnCursor(null);
         }
     }
 
