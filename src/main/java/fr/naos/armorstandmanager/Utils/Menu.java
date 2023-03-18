@@ -96,10 +96,8 @@ public class Menu implements Listener {
     }
 
     private static void animInitaliseItem(Inventory inventory) {
-        inventory.setItem(10, ItemManage.createItem(false, Material.DIAMOND, cData.floss_text, 1, cData.floss_lore));
-        inventory.setItem(12, ItemManage.createItem(false, Material.EMERALD, cData.dab_text, 1, cData.dab_lore));
-        inventory.setItem(14, ItemManage.createItem(false, Material.COAL, cData.handInAir_text, 1, cData.handInAir_lore));
-        inventory.setItem(16, ItemManage.createItem(false, Material.LAPIS_ORE, cData.swordInRock_text, 1, cData.swordInRock_lore));
+        inventory.setItem(12, ItemManage.createItem(false, Material.DIAMOND, cData.floss_text, 1, cData.floss_lore));
+        inventory.setItem(14, ItemManage.createItem(false, Material.EMERALD, cData.dab_text, 1, cData.dab_lore));
         for (int i = 0; i < inventory.getSize(); i++) {
             if (inventory.getItem(i) == null) {
                 inventory.setItem(i, ItemManage.createItem(false, Material.GRAY_STAINED_GLASS_PANE, " ", 1));
@@ -114,10 +112,10 @@ public class Menu implements Listener {
         ArmorStand armorstandChanged = playerArmorStandMap.get(player);
         if (inv.getHolder() instanceof animHolder && inv.getHolder() != null && armorstandChanged != null && event.getCurrentItem() != null && event.getCurrentItem().getType() != Material.GRAY_STAINED_GLASS_PANE) {
             event.setCancelled(true);
-            if (event.getSlot() == 10) {
+            if (event.getSlot() == 12) {
                 player.closeInventory();
                 floss(armorstandChanged);
-            } else if (event.getSlot() == 12) {
+            } else if (event.getSlot() == 14) {
                 player.closeInventory();
                 dab(armorstandChanged);
             }
