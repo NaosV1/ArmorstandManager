@@ -1,4 +1,4 @@
-package fr.naos.armorstandmanager;
+package fr.naos.armorstandmanager.Holder;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;

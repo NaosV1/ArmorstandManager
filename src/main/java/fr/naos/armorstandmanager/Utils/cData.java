@@ -1,5 +1,6 @@
-package fr.naos.armorstandmanager;
+package fr.naos.armorstandmanager.Utils;
 
+import fr.naos.armorstandmanager.ArmorstandManager;
 import org.bukkit.ChatColor;
 
 public class cData {
@@ -34,6 +35,15 @@ public class cData {
     public static String arrowLeft_lore;
     public static String arrowRight_text;
     public static String arrowRight_lore;
+    public static String size_text;
+    public static String size_lore_small;
+    public static String size_lore_notsmall;
+    public static String anim_text;
+    public static String anim_lore;
+    public static String dab_text;
+    public static String dab_lore;
+    public static String floss_text;
+    public static String floss_lore;
 
     public static String lang = ArmorstandManager.getInstance().getConfig().getString("lang");
     public static void loadConfig() {
@@ -68,6 +78,15 @@ public class cData {
             arrowLeft_lore = "§f    Cliquez pour §etourner §fle porte armure vers la gauche";
             arrowRight_text = "§aTourner vers la droite";
             arrowRight_lore = "§f    Cliquez pour §etourner §fle porte armure vers la droite";
+            size_text = "§aTaille";
+            size_lore_small = "§f    Cliquez pour §eagrandir §fle porte armure";
+            size_lore_notsmall = "§f    Cliquez pour §eréduire §fle porte armure";
+            anim_text = "§aAnimation";
+            anim_lore = "§f    Cliquez pour §eanimer §fle porte armure";
+            floss_text = "§aFloss";
+            floss_lore = "§f    Cliquez pour §eafficher §fl'animation §afloss";
+            dab_text = "§aDab";
+            dab_lore = "§f    Cliquez pour §eafficher §fl'animation §adab";
 
 
         } else if (lang.equalsIgnoreCase("en")) {
@@ -100,6 +119,15 @@ public class cData {
             arrowLeft_lore = "§f    Click to §eturn §fthe armorstand to the left";
             arrowRight_text = "§aTurn to the right";
             arrowRight_lore = "§f    Click to §eturn §fthe armorstand to the right";
+            size_text = "§aSize";
+            size_lore_small = "§f    Click to §eincrease §fthe armorstand";
+            size_lore_notsmall = "§f    Click to §ereduce §fthe armorstand";
+            anim_text = "§aAnimation";
+            anim_lore = "§f    Click to §eanimate §fthe armorstand";
+            floss_text = "§aFloss";
+            floss_lore = "§f    Click to §eshow §fthe animation §afloss";
+            dab_text = "§aDab";
+            dab_lore = "§f    Click to §eshow §fthe animation §adab";
 
         } else {
             ArmorstandManager.getInstance().getLogger().warning("The language is not valid, please change it in the config.yml");

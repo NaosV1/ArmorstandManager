@@ -1,6 +1,10 @@
 package fr.naos.armorstandmanager;
 
 
+import fr.naos.armorstandmanager.Listener.ArmorstandListener;
+import fr.naos.armorstandmanager.Listener.OnJoin;
+import fr.naos.armorstandmanager.Utils.Menu;
+import fr.naos.armorstandmanager.Utils.cData;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,15 +24,16 @@ public final class ArmorstandManager extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new ArmorstandListener(), this);
         pm.registerEvents(new Menu(), this);
+        pm.registerEvents(new OnJoin(), this);
         Metrics metrics = new Metrics(this, 17899);
         cData.loadConfig();
-        updateCheck();
-
-
+        if (updateCheck()) {
+            Bukkit.getConsoleSender().sendMessage("\n§a[ArmorStand Manager] §fA new version is available\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n§fYour version : §b" + getDescription().getVersion() + "\n§fDownload it here :§e https://www.spigotmc.org/resources/armorstand-manager.108524/\n§fIf you §clike §fthe plugin, please leave a review, it help a lot !\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n");
+        }
 
     }
 
-    private void updateCheck(){
+    public boolean updateCheck(){
         resourceId = 108424;
         try {
             URL url = new URL("https://api.spigotmc.org/legacy/update.php?resource=108524");
@@ -46,12 +51,13 @@ public final class ArmorstandManager extends JavaPlugin {
             }
             in.close();
             if (!(content.toString().equals(getDescription().getVersion()))) {
-                Bukkit.getConsoleSender().sendMessage("\n§a[ArmorStand Manager] §fA new version is available\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n§fYour version : §b" + getDescription().getVersion() + "\n§fNew version : §b" + content + "\n§fDownload it here :§e https://www.spigotmc.org/resources/armorstand-manager.108524/\n§fIf you §clike §fthe plugin, please leave a review, it help a lot !\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=\n");
+                return true;
             }
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage("§cError checking update for ArmorStand Manager: §e" + e.getMessage());
+            return false;
         }
-
+        return false;
     }
 
     public static ArmorstandManager getInstance() {

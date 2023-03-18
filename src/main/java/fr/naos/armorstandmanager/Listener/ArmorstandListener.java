@@ -1,5 +1,6 @@
-package fr.naos.armorstandmanager;
+package fr.naos.armorstandmanager.Listener;
 
+import fr.naos.armorstandmanager.Utils.Menu;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
